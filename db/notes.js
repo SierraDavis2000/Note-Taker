@@ -19,15 +19,15 @@ class notes {
     appendNote(note) {
         const {title, text} = note
 
-        const newNote = { title, text, id: uuid() }
+        const newNote = { title, text, id: uuid.v4() }
 
         return this.retrieveNotes()
         .then(notes => [...notes, newNote])
-        .then(updatedNotes => this.write(updatedNotes))
+        .then(updatedNotes => this.construct(updatedNotes))
         .then(() => this.newNote)
     }
     retrieveNotes() {
-        return this.read()
+        return this.readNotes()
             .then(notes => {
                 return JSON.parse(notes) || [];
             })
