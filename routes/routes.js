@@ -7,7 +7,18 @@ const notes = require('../db/notes');
 
 
 //route to db.json file
-
+router.post("/api/notes", function (req, res) {
+    const currentNotes = notes.readNotes();
+    let newNote = {
+      id: uuid(),
+      title: req.body.title,
+      text: req.body.text,
+    };
+  
+    await notes.addNote([...currentNotes, newNote]);
+  
+    return res.send(newNote);
+  });
 
 router.get('/api/notes', (req, res) => {
     notes

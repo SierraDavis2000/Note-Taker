@@ -10,8 +10,8 @@ const writeFileAsync = util.promisify(fs.writeFile);
 const apiData = './db/db.json';
 
 class notes {
-    read(){
-        return readFileAsync (apiData, 'utf8')
+    readNotes() {
+        return readFileAsync(apiData, "UTF8");
     }
     construct(note){
         return writeFileAsync (apiData, JSON.stringify(note))
