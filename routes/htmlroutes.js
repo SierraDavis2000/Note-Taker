@@ -1,15 +1,20 @@
+// set up required packages
+const express = require("express");
+const router = require('express').Router();
+const path = require('path');
 
+//route to notes.html
 
-//route to db.json file
-
-router.get("/api/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "/db/db.json"));
+router.get("/notes", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/notes.html"));
 });
 
 
 
-app.post("/api/notes", (req, res) => {
-    let createNote = req.body;
-    let noteFolder = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-    let noteLength = (noteFolder.length )
-})
+//route to index.html
+router.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+});
+
+
+module.exports = router;
